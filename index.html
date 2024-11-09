@@ -36,13 +36,13 @@
             align-items: center;
             align-content: center;
             justify-content: center;
-            background-color: #F4F1DE; /* Cream color */
+            background-color: #F4F1DE; 
             margin-left: 2rem;
             border: 0.3rem solid;
             border-radius: 4rem;
         }
         .logo p{
-            color: #2D5A27; /* Dark forest green */
+            color: #2D5A27;
             height: 100%;
             width: fit-content;
             padding: 0.6rem;
@@ -55,7 +55,7 @@
             justify-content: space-evenly;
             width: 30%;
             border-radius: 3rem;
-            background-color: #1B4332; /* Darker green */
+            background-color: #1B4332;
             height: 5rem;
         }
         nav a{
@@ -70,12 +70,12 @@
             border-radius: 3rem;
         }
         nav a:hover{
-            background-color: #A7C4BC; /* Sage green */
+            background-color: #A7C4BC;
             color: #1B4332;
         }
         @keyframes pulse {
             25%{
-                background-color: #90A955; /* Olive green */
+                background-color: #90A955; 
                 color: #1B4332;
             }
         }
@@ -95,7 +95,7 @@
             justify-content: space-evenly;
         }
         .one{
-            background-color: #3A5A40; /* Forest green */
+            background-color: #3A5A40;
             width: 50%;
             display: flex;
             flex-direction: column;
@@ -118,11 +118,11 @@
             border-right: none;
             color: #1B4332;
             padding-left: 2rem;
-            background-color: #F4F1DE; /* Cream color */
+            background-color: #F4F1DE;
         }
         .searchBar button{
             border-radius: 0rem 2rem 2rem 0rem;
-            background-color: #F4F1DE; /* Cream color */
+            background-color: #F4F1DE; 
             display: flex;
             border-left: none;
             padding: 0.65rem;
@@ -152,7 +152,7 @@
             background-color: #F4F1DE;
         }
         .additionalInfo button{
-            background-color: #90A955; /* Olive green */
+            background-color: #90A955; 
             cursor: pointer;
             color: #F4F1DE;
             font-size: 2rem;
@@ -163,7 +163,7 @@
             background-color: #A7C4BC;
         }
         .two{
-            background-color: #DAE2DF; /* Light sage */
+            background-color: #DAE2DF;
             width: 50%;
             padding: 1rem;
             display: flex;
@@ -186,7 +186,7 @@
             width: 50%;
             height: 3rem;
             padding: 2rem;
-            background-color: #3A5A40; /* Forest green */
+            background-color: #3A5A40; 
             border-radius: 2rem;
             margin: 2rem;
             display: flex;
@@ -197,7 +197,7 @@
             font-size: 1.3rem;
             display: none;
             align-self: center;
-            background-color: #90A955; /* Olive green */
+            background-color: #90A955;
             color: #F4F1DE;
             padding: 0.5rem 1rem;
             border-radius: 1rem;
@@ -222,12 +222,11 @@
             width: 50%;
         }
         .errorMessage {
-            color: #E76F51; /* Terracotta for errors */
+            color: #E76F51; 
             margin-top: 1rem;
         }
     </style>
 </head>
-<!-- Rest of the HTML and JavaScript remains unchanged -->
 <body>
     <header>
         <div class="logo"><p>Do-It</p></div>
@@ -257,7 +256,6 @@
         </section>
     </main>
     <script>
-        // JavaScript code remains the same
         function check(Value,DateValue,TimeValue)
         {
             document.getElementById('errorMessage').innerHTML='';
@@ -298,7 +296,7 @@
             var info=document.getElementById('value').value;
             var dateval=document.getElementById('dateValue').value;
             var timeval=document.getElementById('timeValue').value;
-            if(check(info,dateval,timeval) && countone<=4)
+            if(check(info,dateval,timeval) && countone<4)
             {
                 var output = document.createElement('div');
                 output.id=`task${countone+1}`;
@@ -316,7 +314,7 @@
                 document.getElementById('taskContainer').append(output)
                 countone++;
             }
-            else if(check(info,dateval,timeval) && counttwo<=4){
+            else if(check(info,dateval,timeval) && counttwo<4){
                 var output = document.createElement('div');
                 output.id=`task${counttwo+1}`;
                 output.classList.add(`task${counttwo+1}`)
