@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub</title>
+    <style>
+        *{
+            font-family: geist Mono;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            color: white;
+            border: none;
+            outline: none;
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        body{
+            height: 100vh;
+            overflow: hidden;
+            background-color: #2D5A27;
+
+        }
+        header{
+            display: flex;
+            background-color: #2D5A27;
+            align-items: center;
+            padding: 2rem 2rem 0rem 2rem;
+        }
+        .logo{
+            width: fit-content;
+            margin-right: 25%;
+            height: 100%;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            background-color: #F4F1DE; /* Cream color */
+            margin-left: 2rem;
+            border: 0.3rem solid;
+            border-radius: 4rem;
+        }
+        .logo p{
+            color: #2D5A27; /* Dark forest green */
+            height: 100%;
+            width: fit-content;
+            padding: 0.6rem;
+            font-size: 3rem;
+            font-weight: 900;
+        }
+        nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 30%;
+            border-radius: 3rem;
+            background-color: #1B4332; /* Darker green */
+            height: 5rem;
+        }
+        nav a{
+            font-weight: 800;
+            font-size: 1.4rem;
+            padding: 0.5rem;
+            width: 7rem;
+            height: auto;
+            text-align: center;
+            transition: all 0.3s;
+            animation: pulse 3s infinite;
+            border-radius: 3rem;
+        }
+        nav a:hover{
+            background-color: #A7C4BC; /* Sage green */
+            color: #1B4332;
+        }
+        @keyframes pulse {
+            25%{
+                background-color: #90A955; /* Olive green */
+                color: #1B4332;
+            }
+        }
+        .home{
+            animation-delay: 0s;
+        }
+        .contact{
+            animation-delay: 1s;
+        }
+        .about{
+            animation-delay: 1.6s;
+        }
+        main{
+            margin-top: 3rem;
+            height: 82.2vh;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .one{
+            background-color: #3A5A40; /* Forest green */
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 2rem;
+        }
+        .searchBar{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 13rem;
+        }
+        .searchBar *{
+            transition: 0.3s all;
+        }
+        .searchBar input{
+            border-radius: 2rem 0rem 0rem 2rem;
+            font-size: 3rem;
+            border-right: none;
+            color: #1B4332;
+            padding-left: 2rem;
+            background-color: #F4F1DE; /* Cream color */
+        }
+        .searchBar button{
+            border-radius: 0rem 2rem 2rem 0rem;
+            background-color: #F4F1DE; /* Cream color */
+            display: flex;
+            border-left: none;
+            padding: 0.65rem;
+            cursor: pointer;
+            font-size: 2rem;
+            width: 4rem;
+            justify-content: center;
+        }
+        .searchBar button p{
+            color: #2D5A27;
+        }
+        .searchBar button:hover{
+            background-color: #90A955;
+        }
+        .searchBar button:hover p{
+            transform: rotate(45deg) scale(1.2);
+            color: #F4F1DE;
+        }
+        .additionalInfo{
+            display: flex;
+            justify-content: space-evenly;
+            margin-left: 5%;
+        }
+        .additionalInfo input{
+            font-size: 2rem;
+            color: #1B4332;
+            background-color: #F4F1DE;
+        }
+        .additionalInfo button{
+            background-color: #90A955; /* Olive green */
+            cursor: pointer;
+            color: #F4F1DE;
+            font-size: 2rem;
+            padding: 0rem 1rem 0rem 1rem;
+            transition: all 0.3s;
+        }
+        .additionalInfo button:hover{
+            background-color: #A7C4BC;
+        }
+        .two{
+            background-color: #DAE2DF; /* Light sage */
+            width: 50%;
+            padding: 1rem;
+            display: flex;
+            gap: 3rem;
+        }
+        #taskContainer{
+            display: flex;
+            align-items: start;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+            width: 50%;
+        }
+        #task1 *, #task2 *, #task3 *, #task4 *, #task5 *, #task6 *, #task7 *, #task8 *, #task9 * {
+            transition: all linear 0.2s;
+            color: #F4F1DE;
+        }
+        #task1, #task2, #task3, #task4, #task5, #task6, #task7, #task8, #task9{
+            border: 2px solid #2D5A27;
+            width: 50%;
+            height: 3rem;
+            padding: 2rem;
+            background-color: #3A5A40; /* Forest green */
+            border-radius: 2rem;
+            margin: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #task1 button, #task2 button, #task3 button, #task4 button, #task5 button, #task6 button, #task7 button, #task8 button, #task9 button{
+            font-size: 1.3rem;
+            display: none;
+            align-self: center;
+            background-color: #90A955; /* Olive green */
+            color: #F4F1DE;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            width: 100%;
+        }
+        #task1 button:hover, #task2 button:hover, #task3 button:hover, #task4 button:hover, #task5 button:hover, #task6 button:hover, #task7 button:hover, #task8 button:hover, #task9 button:hover{
+            background-color: #A7C4BC;
+        }
+        #task1:hover button, #task2:hover button, #task3:hover button, #task4:hover button, #task5:hover button, #task6:hover button, #task7:hover button, #task8:hover button, #task9:hover button{
+            display: block;
+        }
+        #task1:hover .heading, #task1:hover .dateTime, #task2:hover .heading, #task2:hover .dateTime, #task3:hover .heading, #task3:hover .dateTime, #task4:hover .heading, #task4:hover .dateTime, #task5:hover .heading, #task5:hover .dateTime, #task6:hover .heading, #task6:hover .dateTime, #task7:hover .heading, #task7:hover .dateTime, #task8:hover .heading, #task8:hover .dateTime, #task9:hover .heading, #task9:hover .dateTime{
+            display: none;
+        }
+        .startedtasks{
+            display: flex;
+            align-items: start;
+            flex-direction: column;
+            gap: 1em;
+            height: 100%;
+            width: 50%;
+        }
+        .errorMessage {
+            color: #E76F51; /* Terracotta for errors */
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<!-- Rest of the HTML and JavaScript remains unchanged -->
+<body>
+    <header>
+        <div class="logo"><p>Do-It</p></div>
+        <nav>
+            <a href="" id="home" class="home">Home</a>
+            <a href="" id="contact" class="contact">Contact</a>
+            <a href="" id="about" class="about">About</a>
+        </nav>
+    </header>
+    <main>
+        <section class="one">
+            <div class="searchBar">
+                <input autocomplete="off" placeholder="Enter Task Name" required id="value" type="text">
+                <button onclick="document.getElementById('value').value='';"><p>+</p></button>
+            </div>
+            <div class="additionalInfo">
+                <input required id="dateValue" type="date">
+                <input required id="timeValue" type="time">
+                <button onclick="create()" type="submit">Add Task</button>
+            </div>
+            <div class="errorMessage" id="errorMessage"></div>
+        </section>
+        <section class="two">
+            <div class="addedtasks" id="taskContainer">
+            </div>
+            <div class="startedtasks" id="startedTaskContainer"></div>
+        </section>
+    </main>
+    <script>
+        // JavaScript code remains the same
+        function check(Value,DateValue,TimeValue)
+        {
+            document.getElementById('errorMessage').innerHTML='';
+            var Error =document.createElement('div');
+            if(DateValue.length==0)
+            {
+                Error.innerHTML='Add date when the task is to be completed!';
+                Error.style.fontSize='1.5rem';
+                Error.style.color='#E76F51';
+                Error.style.fontWeight='800';
+                document.getElementById('errorMessage').append(Error);
+                return false
+            }
+            if(Value.length==0)
+            {
+                Error.innerHTML='Add a task name!';
+                Error.style.fontSize='1.5rem';
+                Error.style.color='#E76F51';
+                Error.style.fontWeight='800';
+                document.getElementById('errorMessage').append(Error);
+                return false
+            }
+            if(TimeValue.length==0)
+            {
+                Error.innerHTML='Add a time to start the task!';
+                Error.style.fontSize='1.5rem';
+                Error.style.color='#E76F51';
+                Error.style.fontWeight='800';
+                document.getElementById('errorMessage').append(Error);
+                return false
+            }
+            return true
+        }
+        const number=["one","two","three","four","five","six","seven","eight","nine","ten"]
+        let countone=0;
+        let counttwo=0;
+        function create() {
+            var info=document.getElementById('value').value;
+            var dateval=document.getElementById('dateValue').value;
+            var timeval=document.getElementById('timeValue').value;
+            if(check(info,dateval,timeval) && countone<=4)
+            {
+                var output = document.createElement('div');
+                output.id=`task${countone+1}`;
+                output.classList.add(`task${countone+1}`)
+                output.innerHTML=`
+                        <h1 class="heading">${info}</h1>
+                        <p class="dateTime">To be Completed by: ${dateval} ${timeval}</p>
+                        <button class="${number[countone]}">Task Completed</button>
+                        `;
+                const button = output.querySelector('button');
+                button.addEventListener('click', function() {
+                    button.parentElement.remove();
+                    countone-=1
+                });
+                document.getElementById('taskContainer').append(output)
+                countone++;
+            }
+            else if(check(info,dateval,timeval) && counttwo<=4){
+                var output = document.createElement('div');
+                output.id=`task${counttwo+1}`;
+                output.classList.add(`task${counttwo+1}`)
+                output.innerHTML=`
+                <h1 class="heading">${info}</h1>
+                <p class="dateTime">To be Completed by: ${dateval} ${timeval}</p>
+                <button id="${number[counttwo]}">Task Completed</button>
+                `;
+                const button = output.querySelector('button');
+                button.addEventListener('click', function() {
+                    button.parentElement.remove();
+                    counttwo-=1
+                });
+                document.getElementById('startedTaskContainer').append(output)
+                count++;
+            }
+        }
+    </script>
+</body>
+</html>
