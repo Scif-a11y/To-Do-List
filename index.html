@@ -36,13 +36,13 @@
             align-items: center;
             align-content: center;
             justify-content: center;
-            background-color: #F4F1DE; 
+            background-color: #F4F1DE; /* Cream color */
             margin-left: 2rem;
             border: 0.3rem solid;
             border-radius: 4rem;
         }
         .logo p{
-            color: #2D5A27;
+            color: #2D5A27; /* Dark forest green */
             height: 100%;
             width: fit-content;
             padding: 0.6rem;
@@ -55,7 +55,7 @@
             justify-content: space-evenly;
             width: 30%;
             border-radius: 3rem;
-            background-color: #1B4332;
+            background-color: #1B4332; /* Darker green */
             height: 5rem;
         }
         nav a{
@@ -70,12 +70,12 @@
             border-radius: 3rem;
         }
         nav a:hover{
-            background-color: #A7C4BC;
+            background-color: #A7C4BC; /* Sage green */
             color: #1B4332;
         }
         @keyframes pulse {
             25%{
-                background-color: #90A955; 
+                background-color: #90A955; /* Olive green */
                 color: #1B4332;
             }
         }
@@ -122,7 +122,7 @@
         }
         .searchBar button{
             border-radius: 0rem 2rem 2rem 0rem;
-            background-color: #F4F1DE; 
+            background-color: #F4F1DE;
             display: flex;
             border-left: none;
             padding: 0.65rem;
@@ -152,7 +152,7 @@
             background-color: #F4F1DE;
         }
         .additionalInfo button{
-            background-color: #90A955; 
+            background-color: #90A955;
             cursor: pointer;
             color: #F4F1DE;
             font-size: 2rem;
@@ -186,7 +186,7 @@
             width: 50%;
             height: 3rem;
             padding: 2rem;
-            background-color: #3A5A40; 
+            background-color: #3A5A40;
             border-radius: 2rem;
             margin: 2rem;
             display: flex;
@@ -222,7 +222,7 @@
             width: 50%;
         }
         .errorMessage {
-            color: #E76F51; 
+            color: #E76F51;
             margin-top: 1rem;
         }
     </style>
@@ -319,10 +319,10 @@
                 output.id=`task${counttwo+1}`;
                 output.classList.add(`task${counttwo+1}`)
                 output.innerHTML=`
-                <h1 class="heading">${info}</h1>
-                <p class="dateTime">To be Completed by: ${dateval} ${timeval}</p>
-                <button id="${number[counttwo]}">Task Completed</button>
-                `;
+                        <h1 class="heading">${info}</h1>
+                        <p class="dateTime">To be Completed by: ${dateval} ${timeval}</p>
+                        <button id="${number[counttwo]}">Task Completed</button>
+                    `;
                 const button = output.querySelector('button');
                 button.addEventListener('click', function() {
                     button.parentElement.remove();
