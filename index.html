@@ -135,7 +135,7 @@
             margin-top: 13rem;
         }
         .searchBar *{
-            transition: 0.3s all;
+            transition: 0.2s all;
         }
         .searchBar input{
             border-radius: 2rem 0rem 0rem 2rem;
@@ -151,19 +151,13 @@
             display: flex;
             border-left: none;
             padding: 0.65rem;
-            cursor: pointer;
             font-size: 2rem;
             width: 4rem;
             justify-content: center;
         }
         .searchBar button p{
             color: #2D5A27;
-        }
-        .searchBar button:hover{
-            background-color: #90A955;
-        }
-        .searchBar button:hover p{
-            color: #F4F1DE;
+            visibility: hidden;
         }
         .additionalInfo{
             display: flex;
@@ -283,7 +277,7 @@
         <section class="one">
             <div class="searchBar">
                 <input autocomplete="off" placeholder="Enter Task Name" required id="value" type="text">
-                <button><p id="plusContent">+</p></button>
+            <button onclick="document.getElementById('value').value='';document.getElementById('plusContent').style.transform='rotate(0deg)'; document.getElementById('plusContent').style.visibility='hidden'; document.getElementById('buttonContainer').style.cursor='';" id="buttonContainer"><p id="plusContent">+</p></button>
             </div>
             <div class="additionalInfo">
                 <input required id="dateValue" type="date">
@@ -313,10 +307,14 @@
 
         document.getElementById('value').addEventListener('input', () => {
         if (document.getElementById('value').value.length > 0) {
+            document.getElementById('plusContent').style.visibility='visible';
             document.getElementById('plusContent').style.transform='rotate(45deg) scale(1.5)';
+            document.getElementById('buttonContainer').style.cursor='pointer';
         }
         else if(document.getElementById('value').value.length == 0){
+            document.getElementById('plusContent').style.visibility='hidden';
             document.getElementById('plusContent').style.transform='rotate(0deg)';
+            document.getElementById('buttonContainer').style.cursor='';
         }
         });
         function check(Value,DateValue,TimeValue)
