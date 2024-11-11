@@ -19,6 +19,7 @@
             display: none;
         }
         html, body {
+            overflow: hidden;
             height: 100%;
             margin: 0;
             padding: 0;
@@ -32,11 +33,11 @@
             display: flex;
             background-color: #2D5A27;
             align-items: center;
+            height: 10rem;
             padding: 1rem 0rem 1rem 2rem;
         }
         .logo{
             width: fit-content;
-            height: 100%;
             align-items: center;
             align-content: center;
             justify-content: center;
@@ -100,7 +101,6 @@
             margin-left: 9.2%;
             transform: translateX(101%);
             transition: transform 0.5s ease-in-out;
-            height: 100%;
             width: 25%;
             background-color: beige;
             text-align: center;
@@ -265,12 +265,6 @@
             <a href="" id="about" class="about">About</a>
         </nav>
         <div class="message" id="message">
-            <h1>Contact</h1>
-            <p>
-                Email:sahaj.mauryaa@gmail.com
-                <br>
-                Contact:1234567890
-            </p>
         </div>
     </header>
     <main>
@@ -296,15 +290,54 @@
         let val = true;
         document.getElementById('contacts').addEventListener('click', function() {
             event.preventDefault();
+            document.getElementById('message').style.transform = 'translateX(101%)';
+        setTimeout(function() {
             if (val) {
                 document.getElementById('message').style.transform = 'translateX(0rem)';
+                document.getElementById('message').style.height='10rem';
+                document.getElementById('message').style.color="black";
+                document.getElementById('message').innerHTML=`
+                <h1>Contact</h1>
+                <p>
+                    Email:sahaj.mauryaa@gmail.com
+                    <br>
+                    Contact:1234567890
+                </p>
+
+                    `;
                 val = false;
             } else {
                 document.getElementById('message').style.transform = 'translateX(101%)';
                 val = true;
             }
+        },600);
         });
+        let val2=true;
+        document.getElementById('about').addEventListener('click', function(event) {
+    event.preventDefault();
+            console.log(document.getElementById('message').style.transform);
+    document.getElementById('message').style.transform = 'translateX(101%)';
 
+    setTimeout(function() {
+        if (val2) {
+            document.getElementById('message').style.transform = 'translateX(0rem)';
+            document.getElementById('message').style.height = '10rem';
+            document.getElementById('message').style.color = 'black';
+            document.getElementById('message').innerHTML = `
+                <h1>About</h1>
+                <p>
+                    A Project for Github Club.
+                    <br>
+                    Created By Sahaj Maurya.
+                </p>
+            `;
+            val2 = false;
+        } else {
+            document.getElementById('message').style.transform = 'translateX(101%)';
+            val2 = true;
+        }
+    }, 600);
+});
         document.getElementById('value').addEventListener('input', () => {
         if (document.getElementById('value').value.length > 0) {
             document.getElementById('plusContent').style.visibility='visible';
