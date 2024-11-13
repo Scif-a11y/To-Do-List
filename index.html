@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             text-decoration: none;
-            color: white;
+            color: #7193ac;
             border: none;
             outline: none;
         }
@@ -26,12 +26,11 @@
         }
         body{
             height: 100vh;
-            background-color: #2D5A27;
 
         }
         header{
             display: flex;
-            background-color: #2D5A27;
+            background-color: #7193ac;
             align-items: center;
             height: 10rem;
             padding: 1rem 0rem 1rem 2rem;
@@ -59,13 +58,14 @@
             justify-content: space-around;
             width: 30%;
             border-radius: 3rem;
-            background-color: #1B4332;
+            background-color: beige;
             padding: 1rem;
             height: 4rem;
             margin-left: 25%;
         }
 
         nav a{
+            border: 2px solid transparent;
             font-weight: 800;
             font-size: 1.4rem;
             padding: 0.5rem;
@@ -75,16 +75,18 @@
             transition: all 0.3s;
             animation: pulse 3s infinite;
             border-radius: 3rem;
+            color: #7193ac;
         }
         nav a:hover{
-            background-color: #A7C4BC;
-            color: #1B4332;
+            border-color: #7193ac;
+            background-color: transparent;
+            color: #7193ac;
             animation: none;
         }
         @keyframes pulse {
             25%{
-                background-color: #90A955;
-                color: #1B4332;
+                background-color: #7193ac;
+                color: beige;
             }
         }
         .home{
@@ -95,7 +97,7 @@
         }
 
         .about{
-            animation-delay: 1.6s;
+            animation-delay: 2s;
         }
         .message {
             margin-left: 9.2%;
@@ -119,7 +121,7 @@
             justify-content: space-evenly;
         }
         .one{
-            background-color: #3A5A40;
+            background-color: #7193ac;
             padding: 2rem;
             width: 50%;
             display: flex;
@@ -141,13 +143,28 @@
             border-radius: 2rem 0rem 0rem 2rem;
             font-size: 3rem;
             border-right: none;
-            color: #1B4332;
+            border: 2px solid transparent;
+            color: beige;
             padding-left: 2rem;
             background-color: #F4F1DE;
         }
+        .searchBar input:focus{
+            background-color: transparent;
+            border-color: beige;
+        }
+        .searchBar input:focus::placeholder{
+            color: beige;
+        }
+        .searchBar input:focus button{
+            background-color: red;
+        }
+        .searchBar input:focus button{
+            background-color: red;
+        }
         .searchBar button{
+            border: 2px solid transparent;
             border-radius: 0rem 2rem 2rem 0rem;
-            background-color: #F4F1DE;
+            background-color: beige;
             display: flex;
             border-left: none;
             padding: 0.65rem;
@@ -156,7 +173,7 @@
             justify-content: center;
         }
         .searchBar button p{
-            color: #2D5A27;
+            color: black;
             visibility: hidden;
         }
         .additionalInfo{
@@ -170,18 +187,21 @@
             background-color: #F4F1DE;
         }
         .additionalInfo button{
-            background-color: #90A955;
+            background-color:beige;
             cursor: pointer;
-            color: #F4F1DE;
+            color:#1B4332;
             font-size: 2rem;
             padding: 0rem 1rem 0rem 1rem;
             transition: all 0.3s;
+            border: 2px solid transparent;
         }
         .additionalInfo button:hover{
-            background-color: #A7C4BC;
+            border-color: beige;
+            background-color: #7193ac;
+            color: beige;
         }
         .two{
-            background-color: #DAE2DF;
+            background-color: beige;
             width: 50%;
             padding: 1rem;
             display: flex;
@@ -200,12 +220,10 @@
             color: #F4F1DE;
         }
         #task1, #task2, #task3, #task4, #task5, #task6, #task7, #task8, #task9{
-            border: 2px solid #2D5A27;
             width: 50%;
             height: 3rem;
             padding: 2rem;
-            background-color: #3A5A40;
-            border-radius: 2rem;
+            background-color: #7193ac;
             margin: 2rem;
             display: flex;
             flex-direction: column;
@@ -215,15 +233,18 @@
             font-size: 1.3rem;
             display: none;
             align-self: center;
-            background-color: #90A955;
-            color: #F4F1DE;
+            background-color: beige;
+            color: #7193ac;
             padding: 0.5rem 1rem;
             border-radius: 1rem;
             cursor: pointer;
             width: 100%;
+            border: 2px transparent solid;
         }
         #task1 button:hover, #task2 button:hover, #task3 button:hover, #task4 button:hover, #task5 button:hover, #task6 button:hover, #task7 button:hover, #task8 button:hover, #task9 button:hover{
-            background-color: #A7C4BC;
+            background-color: #7193ac;
+            color: beige;
+            border-color: beige;
         }
         #task1:hover button, #task2:hover button, #task3:hover button, #task4:hover button, #task5:hover button, #task6:hover button, #task7:hover button, #task8:hover button, #task9:hover button{
             display: block;
@@ -240,7 +261,7 @@
             width: 50%;
         }
         .errorMessage {
-            color: #E76F51;
+            color: beige;
             margin-top: 1rem;
         }
         @media (max-width:400px) {
@@ -289,8 +310,8 @@
     <script>
         let val = true;
         document.getElementById('contacts').addEventListener('click', function() {
-            event.preventDefault();
-            document.getElementById('message').style.transform = 'translateX(101%)';
+        event.preventDefault();
+        document.getElementById('message').style.transform = 'translateX(101%)';
         setTimeout(function() {
             if (val) {
                 document.getElementById('message').style.transform = 'translateX(0rem)';
@@ -314,30 +335,32 @@
         });
         let val2=true;
         document.getElementById('about').addEventListener('click', function(event) {
-    event.preventDefault();
-            console.log(document.getElementById('message').style.transform);
-    document.getElementById('message').style.transform = 'translateX(101%)';
+        event.preventDefault();
+        console.log(document.getElementById('message').style.transform);
+        document.getElementById('message').style.transform = 'translateX(101%)';
 
     setTimeout(function() {
-        if (val2) {
-            document.getElementById('message').style.transform = 'translateX(0rem)';
-            document.getElementById('message').style.height = '10rem';
-            document.getElementById('message').style.color = 'black';
-            document.getElementById('message').innerHTML = `
-                <h1>About</h1>
-                <p>
-                    A Project for Github Club.
-                    <br>
-                    Created By Sahaj Maurya.
-                </p>
-            `;
-            val2 = false;
-        } else {
-            document.getElementById('message').style.transform = 'translateX(101%)';
-            val2 = true;
-        }
-    }, 600);
-});
+            if (val2) {
+                document.getElementById('message').style.transform = 'translateX(0rem)';
+                document.getElementById('message').style.height = '10rem';
+                document.getElementById('message').style.color = 'black';
+                document.getElementById('message').innerHTML = `
+                    <h1>About</h1>
+                    <p>
+                        A Project for Github Club.
+                        <br>
+                        Created By Sahaj Maurya.
+                    </p>
+                `;
+                val2 = false;
+            }
+            else
+            {
+                document.getElementById('message').style.transform = 'translateX(101%)';
+                val2 = true;
+            }
+            }, 600);
+        });
         document.getElementById('value').addEventListener('input', () => {
         if (document.getElementById('value').value.length > 0) {
             document.getElementById('plusContent').style.visibility='visible';
@@ -358,7 +381,7 @@
             {
                 Error.innerHTML='Add date when the task is to be completed!';
                 Error.style.fontSize='1.5rem';
-                Error.style.color='#E76F51';
+                Error.style.color='beige';
                 Error.style.fontWeight='800';
                 document.getElementById('errorMessage').append(Error);
                 return false
@@ -367,7 +390,7 @@
             {
                 Error.innerHTML='Add a task name!';
                 Error.style.fontSize='1.5rem';
-                Error.style.color='#E76F51';
+                Error.style.color='beige';
                 Error.style.fontWeight='800';
                 document.getElementById('errorMessage').append(Error);
                 return false
@@ -376,7 +399,7 @@
             {
                 Error.innerHTML='Add a time to start the task!';
                 Error.style.fontSize='1.5rem';
-                Error.style.color='#E76F51';
+                Error.style.color='beige';
                 Error.style.fontWeight='800';
                 document.getElementById('errorMessage').append(Error);
                 return false
