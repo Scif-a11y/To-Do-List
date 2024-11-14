@@ -146,7 +146,7 @@
             border: 2px solid transparent;
             color: beige;
             padding-left: 2rem;
-            background-color: #F4F1DE;
+            background-color: beige;
         }
         .searchBar input:focus{
             background-color: transparent;
@@ -155,14 +155,9 @@
         .searchBar input:focus::placeholder{
             color: beige;
         }
-        .searchBar input:focus button{
-            background-color: red;
-        }
-        .searchBar input:focus button{
-            background-color: red;
-        }
         .searchBar button{
             border: 2px solid transparent;
+            border-left: none;
             border-radius: 0rem 2rem 2rem 0rem;
             background-color: beige;
             display: flex;
@@ -291,12 +286,12 @@
     <main>
         <section class="one">
             <div class="searchBar">
-                <input autocomplete="off" placeholder="Enter Task Name" required id="value" type="text">
-            <button onclick="document.getElementById('value').value='';document.getElementById('plusContent').style.transform='rotate(0deg)'; document.getElementById('plusContent').style.visibility='hidden'; document.getElementById('buttonContainer').style.cursor='';" id="buttonContainer"><p id="plusContent">+</p></button>
+                <input autocomplete="off" placeholder="Enter Task Name" id="value" type="text">
+                <button onclick="document.getElementById('value').value='';document.getElementById('plusContent').style.transform='rotate(0deg)'; document.getElementById('plusContent').style.visibility='hidden'; document.getElementById('buttonContainer').style.cursor='';" id="buttonContainer"><p id="plusContent">+</p></button>
             </div>
             <div class="additionalInfo">
-                <input required id="dateValue" type="date">
-                <input required id="timeValue" type="time">
+                <input id="dateValue" type="date">
+                <input id="timeValue" type="time">
                 <button onclick="create()" type="submit">Add Task</button>
             </div>
             <div class="errorMessage" id="errorMessage"></div>
@@ -308,6 +303,19 @@
         </section>
     </main>
     <script>
+        // let check=true;
+        // document.getElementById('value').addEventListener('click',function () {
+        //     if(check){
+        //         document.getElementById('buttonContainer').style.backgroundColor='transparent';
+        //         document.getElementById('buttonContainer').style.borderColor='beige';
+        //         check=false;
+        //     }
+        //     else{
+        //         document.getElementById('buttonContainer').style.backgroundColor='beige';
+        //         document.getElementById('buttonContainer').style.borderColor='transparent';
+        //         check=true;
+        //     }
+        // });
         let val = true;
         document.getElementById('contacts').addEventListener('click', function() {
         event.preventDefault();
