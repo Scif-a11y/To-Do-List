@@ -144,13 +144,17 @@
             font-size: 3rem;
             border-right: none;
             border: 2px solid transparent;
-            color: beige;
+            color: #476e42;
             padding-left: 2rem;
             background-color: beige;
         }
         .searchBar input:focus{
             background-color: transparent;
             border-color: beige;
+            color: beige;
+        }
+        ::placeholder{
+            color: gray;
         }
         .searchBar input:focus::placeholder{
             color: beige;
@@ -303,19 +307,6 @@
         </section>
     </main>
     <script>
-        // let check=true;
-        // document.getElementById('value').addEventListener('click',function () {
-        //     if(check){
-        //         document.getElementById('buttonContainer').style.backgroundColor='transparent';
-        //         document.getElementById('buttonContainer').style.borderColor='beige';
-        //         check=false;
-        //     }
-        //     else{
-        //         document.getElementById('buttonContainer').style.backgroundColor='beige';
-        //         document.getElementById('buttonContainer').style.borderColor='transparent';
-        //         check=true;
-        //     }
-        // });
         let val = true;
         document.getElementById('contacts').addEventListener('click', function() {
         event.preventDefault();
