@@ -144,6 +144,11 @@ main{
     background-color: transparent;
     border-color: beige;
     color: beige;
+    border-right: transparent solid 2px;
+}
+.searchBar input:focus + .buttonContainer{
+    background-color: transparent;
+    border-color:beige ;
 }
 ::placeholder{
     color: gray;
