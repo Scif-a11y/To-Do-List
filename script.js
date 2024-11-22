@@ -1,141 +1,79 @@
-let val = true;
-        document.getElementById('contacts').addEventListener('click', function() {
-        event.preventDefault();
-        document.getElementById('message').style.transform = 'translateX(101%)';
-        setTimeout(function() {
-            if (val) {
-                document.getElementById('message').style.transform = 'translateX(0rem)';
-                document.getElementById('message').style.height='10rem';
-                document.getElementById('message').style.color="black";
-                document.getElementById('message').innerHTML=`
-                <h1>Contact</h1>
-                <p>
-                    Email:sahaj.mauryaa@gmail.com
-                    <br>
-                    Contact:1234567890
-                </p>
+let totalTasks = 0;
+const maxTasks = 8;
 
-                    `;
-                val = false;
-            } else {
-                document.getElementById('message').style.transform = 'translateX(101%)';
-                val = true;
-            }
-        },600);
-        });
-        let val2=true;
-        document.getElementById('about').addEventListener('click', function(event) {
-        event.preventDefault();
-        console.log(document.getElementById('message').style.transform);
-        document.getElementById('message').style.transform = 'translateX(101%)';
+function showError(message) {
+    const errorMessage = document.querySelector(".errorMessage");
+    errorMessage.textContent = message;
+    setTimeout(() => (errorMessage.textContent = ""), 3000);
+}
 
-    setTimeout(function() {
-            if (val2) {
-                document.getElementById('message').style.transform = 'translateX(0rem)';
-                document.getElementById('message').style.height = '10rem';
-                document.getElementById('message').style.color = 'black';
-                document.getElementById('message').innerHTML = `
-                    <h1>About</h1>
-                    <p>
-                        A Project for Github Club.
-                        <br>
-                        Created By Sahaj Maurya.
-                    </p>
-                `;
-                val2 = false;
-            }
-            else
-            {
-                document.getElementById('message').style.transform = 'translateX(101%)';
-                val2 = true;
-            }
-            }, 600);
+function saveTasks() {
+    const tasks = [];
+    document.querySelectorAll(".task").forEach((task) => {
+        tasks.push({
+            id: task.id,
+            info: task.querySelector(".heading").textContent,
+            dateTime: task.querySelector(".dateTime").textContent,
+            container: task.parentElement.id,
         });
-        document.getElementById('value').addEventListener('input', () => {
-        if (document.getElementById('value').value.length > 0) {
-            document.getElementById('plusContent').style.visibility='visible';
-            document.getElementById('plusContent').style.transform='rotate(45deg) scale(1.5)';
-            document.getElementById('buttonContainer').style.cursor='pointer';
-        }
-        else if(document.getElementById('value').value.length == 0){
-            document.getElementById('plusContent').style.visibility='hidden';
-            document.getElementById('plusContent').style.transform='rotate(0deg)';
-            document.getElementById('buttonContainer').style.cursor='';
-        }
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    savedTasks.forEach((task) => {
+        const output = document.createElement("div");
+        output.id = task.id;
+        output.classList.add("task");
+        output.innerHTML = `
+            <h1 class="heading">${task.info}</h1>
+            <p class="dateTime">${task.dateTime}</p>
+            <button class="${task.id}">Task Completed</button>
+        `;
+        const button = output.querySelector("button");
+        button.addEventListener("click", function () {
+            button.parentElement.remove();
+            totalTasks--;
+            saveTasks();
         });
-        function check(Value,DateValue,TimeValue)
-        {
-            document.getElementById('errorMessage').innerHTML='';
-            var Error =document.createElement('div');
-            if(DateValue.length==0)
-            {
-                Error.innerHTML='Add date when the task is to be completed!';
-                Error.style.fontSize='1.5rem';
-                Error.style.color='beige';
-                Error.style.fontWeight='800';
-                document.getElementById('errorMessage').append(Error);
-                return false
-            }
-            if(Value.length==0)
-            {
-                Error.innerHTML='Add a task name!';
-                Error.style.fontSize='1.5rem';
-                Error.style.color='beige';
-                Error.style.fontWeight='800';
-                document.getElementById('errorMessage').append(Error);
-                return false
-            }
-            if(TimeValue.length==0)
-            {
-                Error.innerHTML='Add a time to start the task!';
-                Error.style.fontSize='1.5rem';
-                Error.style.color='beige';
-                Error.style.fontWeight='800';
-                document.getElementById('errorMessage').append(Error);
-                return false
-            }
-            return true
-        }
-        const number=["one","two","three","four","five","six","seven","eight","nine","ten"]
-        let countone=0;
-        let counttwo=0;
-        function create() {
-            var info=document.getElementById('value').value;
-            var dateval=document.getElementById('dateValue').value;
-            var timeval=document.getElementById('timeValue').value;
-            if(check(info,dateval,timeval) && countone<4)
-            {
-                var output = document.createElement('div');
-                output.id=`task${countone+1}`;
-                output.classList.add(`task${countone+1}`)
-                output.innerHTML=`
-                        <h1 class="heading">${info}</h1>
-                        <p class="dateTime">To be Completed by: ${dateval} ${timeval}</p>
-                        <button class="${number[countone]}">Task Completed</button>
-                        `;
-                const button = output.querySelector('button');
-                button.addEventListener('click', function() {
-                    button.parentElement.remove();
-                    countone-=1
-                });
-                document.getElementById('taskContainer').append(output)
-                countone++;
-            }
-            else if(check(info,dateval,timeval) && counttwo<4){
-                var output = document.createElement('div');
-                output.id=`task${counttwo+1}`;
-                output.classList.add(`task${counttwo+1}`)
-                output.innerHTML=`
-                        <h1 class="heading">${info}</h1>
-                        <p class="dateTime">To be Completed by: ${dateval} ${timeval}</p>
-                        <button id="${number[counttwo]}">Task Completed</button>
-                    `;
-                const button = output.querySelector('button');
-                button.addEventListener('click', function() {
-                    button.parentElement.remove();
-                    counttwo-=1
-                });
-                document.getElementById('startedTaskContainer').append(output)
-                counttwo++;
-            }
-        }
+        document.getElementById(task.container).append(output);
+    });
+    totalTasks = savedTasks.length;
+}
+
+function addTask(info, dateTime, container) {
+    if (totalTasks >= maxTasks) {
+        showError("Maximum tasks reached");
+        return;
+    }
+    const taskId = `task${totalTasks + 1}`;
+    const task = document.createElement("div");
+    task.id = taskId;
+    task.classList.add("task");
+    task.innerHTML = `
+        <h1 class="heading">${info}</h1>
+        <p class="dateTime">${dateTime}</p>
+        <button>Task Completed</button>
+    `;
+    const button = task.querySelector("button");
+    button.addEventListener("click", function () {
+        task.remove();
+        totalTasks--;
+        saveTasks();
+    });
+    document.getElementById(container).append(task);
+    totalTasks++;
+    saveTasks();
+}
+
+document.querySelector(".searchBar button").addEventListener("click", function () {
+    const input = document.querySelector(".searchBar input");
+    const info = input.value;
+    const dateTime = new Date().toLocaleString();
+    addTask(info, dateTime, "taskContainer");
+});
+
+window.onload = function () {
+    loadTasks();
+};
