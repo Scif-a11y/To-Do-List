@@ -253,14 +253,3 @@ main {
     color: beige;
     margin-top: 1rem;
 }
-@media (max-width: 400px) {
-    html {
-        width: 100vw;
-    }
-    main {
-        flex-direction: column;
-    }
-    .one {
-        width: 100%;
-    }
-}
